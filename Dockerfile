@@ -5,7 +5,7 @@ LABEL maintainer 'Adriano Vieira <adriano.svieira at gmail.com>'
 # install base packs
 # apache.wsgi python pip
 RUN yum -y install epel-release; \
-    yum -y install python-pip httpd mod_wsgi; yum clean all;
+    yum -y install python36 python36-pip httpd mod_wsgi; yum clean all;
 
 # Simple startup script to avoid some issues observed with container restart (CentOS tip)
 COPY setup/run-apache-httpd.sh /run-apache-httpd.sh
@@ -19,7 +19,7 @@ EXPOSE 80
 
 # pip install app requirements
 COPY code/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # upload app to image
 COPY code /var/www/html

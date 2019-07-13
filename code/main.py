@@ -7,6 +7,7 @@ author: Adriano dos Santos Vieira <adriano.svieira at google.com>
 character encoding: UTF-8
 '''
 import os, time
+import sys
 from flask import Flask
 from flask import render_template
 
@@ -21,4 +22,6 @@ def about():
     return render_template('about.html',  \
                             datetime=time.strftime("%d/%h/%Y %H:%M:%S"),  \
                             container=os.uname()[1],  \
+                            syspath=sys.path, \
+                            sysexec=sys.executable, \
                             hosted=' '.join(os.uname()))
