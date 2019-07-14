@@ -4,7 +4,7 @@ LABEL maintainer 'Michael Lawrenson <michael.lawrenson@cubrc.org>'
 
 # install base packs
 # apache.wsgi python pip
-RUN yum -y install epel-release gcc; \
+RUN yum -y install epel-release gcc tree; \
     yum -y install python36 python36-pip python36-devel; \
     yum -y install httpd httpd-devel; \
     yum clean all;
