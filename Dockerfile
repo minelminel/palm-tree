@@ -19,9 +19,15 @@ COPY setup/httpd-vhost-wsgi.conf /etc/httpd/conf.d/welcome.conf
 # expose apache port
 EXPOSE 80
 
-# pip install app requirements
+# pip install app requirements, virtualenv
 RUN pip3.6 install --upgrade pip setuptools && pip3.6 install --no-cache-dir virtualenv
+RUN virtualenv -p python3 /usr/local/env && source /usr/local/env/bin/activate
 RUN pip3.6 install mod_wsgi
+
+# allows httpd to work with python3
+RUN mod_wsgi-express install-module > /etc/httpd/conf.modules.d/02-wsgi.conf
+
+# this portion will be replaced by the below "install main repo package"
 COPY code/requirements.txt .
 RUN pip3.6 install -r requirements.txt
 
@@ -29,8 +35,8 @@ RUN pip3.6 install -r requirements.txt
 COPY code /var/www/html
 WORKDIR /var/www/html
 
-# allow httpd to work with python3
-RUN mod_wsgi-express install-module > /etc/httpd/conf.modules.d/02-wsgi.conf
+# install the main repo package
+# RUN pip3.6 install -e .
 
 # run flask app on apache
 CMD ["/run-apache-httpd.sh"]

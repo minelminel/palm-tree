@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}:: About Flask{% endblock %}
+{% block title %}:: Flask Service{% endblock %}
 {% block head %}
   {{ super() }}
   <style type="text/css">
@@ -7,15 +7,18 @@
   </style>
 {% endblock %}
 {% block content %}
-  <h1>About Flask</h1>
-
-  <p>About the World of Flask on Docker! </p>
-  <h3>Page views: {{ tally }}</h3>
+  <h1>About Flask Service</h1>
+  <h3>Uptime: {{ elapsed_time }}</h3>
+  <p>Page views: {{ tally }}</p>
+  <h3>System Info</h3>
   <small>
     {{ datetime }} <br />
-    {{ syspath }} <br />
-    {{ sysexec }} <br />
-    @ {{ container }} <br />
+    PATH: {{ syspath }} <br />
+    EXECUTABLE: {{ sysexec }} <br />
+    CONTAINER @ {{ container }} <br />
     Hosted on: {{ hosted }} <br />
   </small>
+  <hr>
+  <h3>Environment</h3>
+  {{ environ }}
 {% endblock %}

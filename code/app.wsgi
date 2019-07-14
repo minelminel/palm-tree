@@ -6,4 +6,4 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 reload(sys)
 
 
-from main import application
+from main import app as application
