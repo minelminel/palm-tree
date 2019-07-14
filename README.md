@@ -134,7 +134,6 @@ touch /var/log/httpd/flask_log
 [7] Move your source code to the expected location. You may either directly load your source code into the expected location (recommended for simple applications), or store your code in a temporary location moving only the minimum necessary files to the expected location (recommended)
 ```bash
 mv /path/to/repo /var/www/html/
-cd /var/www/html/
 ```
 NOTE: if using a `setup.py` script to run your installation, perform that operation now.
 
@@ -152,7 +151,8 @@ from main import app as application
 
 [9] Start the service using the `run-apache-httpd.sh` script we created previously
 ```bash
-~/run-apache-httpd.sh
+cd /
+./run-apache-httpd.sh
 ```
 
 If everything is working properly, your service should now be accessible. If the server returns a `500 - Internal Server Error`, check the log to see what's causing the problem.
