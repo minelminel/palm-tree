@@ -27,6 +27,9 @@ RUN pip3.6 install mod_wsgi
 # allows httpd to work with python3
 RUN mod_wsgi-express install-module > /etc/httpd/conf.modules.d/02-wsgi.conf
 
+# create file for use as flask log
+RUN touch /var/log/httpd/flask_log
+
 # this portion will be replaced by the below "install main repo package"
 COPY code/requirements.txt .
 RUN pip3.6 install -r requirements.txt
