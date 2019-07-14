@@ -22,6 +22,7 @@ In the case of requirements.txt, we can either copy the requirements file from t
 
 ## VM Manual Installation -- Overview
 Important Locations
+
 | Asset    | Path    |
 | :------------- | :------------- |
 | Source Code       | /var/www/html/       |
