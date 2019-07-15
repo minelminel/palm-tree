@@ -1,4 +1,9 @@
 # CentOS 7 + Apache HTTPD + Flask -- Deployment Guide
+
+![Screen Shot 2019-07-14 at 11 38 59 PM](https://user-images.githubusercontent.com/46664545/61194622-ac6f7d80-a690-11e9-87df-f39e320ec291.png)
+
+###### `about` page of the sample app
+
 We will install a Flask service within a CentOS 7 instance, with Apache HTTPD as our server. For those unaccustomed to working with Python in a production environment, some background: Python requires a middleman to translate http requests into executable Python instructions, and to execute such instructions in a threaded manner. The built-in server that comes with Flask is great for development as it allows live source code reloading, simple startup, and friendly error tracebacks which allow arbitrary command execution within the stack. It should be known, though, that this native server is NOT designed for production use, as it is single-threaded and implements no permission control. Apache HTTPD acts as our web gateway in the same way you're accustomed to, and a module called `mod_wsgi` handles our Python execution. **Important: make sure you do NOT install mod_wsgi as a yum package, as we must ensure that the version of mod_wsgi is compiled for our specific Python version. Rather, we will install mod_wsgi directly into our virtualenv. Make sure to include the gcc yum package as mod_wsgi must be compiled upon installation.**
 
 ## Modifications for Python36
