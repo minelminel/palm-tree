@@ -44,7 +44,7 @@ yum -y install httpd httpd-devel
 yum clean all
 ```
 
-[2] Copy our virtualhost configuration to a location monitored by HTTPD. A sample file is shown below, as well as the location which we should move it to. Note that we assume the presence of our wsgi file in the top-level of our repo, and that the file uses the name `app.wsgi`. The wsgi file is nothing more than a Python script that provides an entrypoint to our application, and uses the `.wsgi` extension only as a convention. A sample `wsgi.app` file is shown in the coming sections.
+[2] Copy our virtualhost configuration to a location monitored by HTTPD. A sample file is shown below, as well as the location which we should move it to. Note that we assume the presence of our wsgi file in the top-level of our repo, and that the file uses the name `app.wsgi`. The wsgi file is nothing more than a Python script that provides an entrypoint to our application, and uses the `.wsgi` extension only as a convention. A sample `app.wsgi` file is shown in step 8.
 ```
 # wsgi log level verbose: info
 LogLevel warn
@@ -70,7 +70,8 @@ LogLevel warn
 ```
 Location to write our conf file to
 ```bash
-/etc/httpd/conf.d/
+# override the default Apache welcome page to use our application
+/etc/httpd/conf.d/welcome.conf
 ```
 If working from the provided boilerplate, use the following command
 ```bash
